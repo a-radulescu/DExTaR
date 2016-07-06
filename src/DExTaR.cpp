@@ -287,7 +287,7 @@ int identifESTandem(set<string> & readsTandem, string pattern, vector<int> & nbC
 				cout <<"REPETITION InOneREAD"<<" "<<pattern<<" "<<nbCopReads[i]<<" "<<entries[i]<<" "<<exits[i]<< endl;
 				totalRepFound = totalRepFound++;
 				
-				if(nbCopReads[i]> = nbCop[i]) multiplicite = false;
+				if(nbCopReads[i]>= nbCop[i]) multiplicite = false;
 				
 				nbCopReads.erase(nbCopReads.begin());
 				nbCop.erase(nbCop.begin()+i);
@@ -377,7 +377,7 @@ int identifESDiff(set<string> readsTandem,set<string> readsBegin,set<string> rea
 	 //cout<<"in identifESDiff readsBegin"<<endl;
 	//in readsBegin
 	string patt = pattern;
-	if(pattern.length()> = maxLength*2) patt = pattern.substr(0,maxLength*2);
+	if(pattern.length()>= maxLength*2) patt = pattern.substr(0,maxLength*2);
 	for(it = readsBegin.begin(); it != readsBegin.end() ; ++it ){
 
 			 //cout<<"READ "<<*it<<endl;
@@ -406,7 +406,7 @@ int identifESDiff(set<string> readsTandem,set<string> readsBegin,set<string> rea
 	 //cout<<"in identifESDiff readsEnd"<<endl;
 	//in readsEnd
 	patt = pattern;
-	if(pattern.length()> = maxLength*2) patt = pattern.substr(pattern.length()-maxLength*2);
+	if(pattern.length()>= maxLength*2) patt = pattern.substr(pattern.length()-maxLength*2);
 
 	 //cout<<pattern<< " "<<patt<<endl;
 	for(it = readsEnd.begin(); it != readsEnd.end() ; ++it ){
@@ -520,7 +520,7 @@ cout<<endl;*/
 						std::string before = read.substr(max(0,posStartInRead-patternLength),min(posStartInRead,patternLength));
 						//cout<<"before "<<before<<endl;
 						std::string after;
-						if(posStartInRead+patternLength> = readLength2) after = "";
+						if(posStartInRead+patternLength>= readLength2) after = "";
 						else
 								after = read.substr(posStartInRead+patternLength,min(patternLength,readLength2-posStartInRead-patternLength));
 						//cout<<"after "<<after<<endl;
@@ -532,7 +532,7 @@ cout<<endl;*/
 						}else if (before.length()<pattern.length() && pattern.find(before) == (pattern.length()-before.length())){
 								readsEnd.insert(read);
 								//cout<<"read goes in readsEnd"<<endl;
-								start+ =  pattern.length();
+								start +=  pattern.length();
 						}else if (after.length()<pattern.length() && pattern.find(after) == 0){
 								readsBegin.insert(read);
 								//cout<<"read goes in readsBegin"<<endl;
@@ -565,7 +565,7 @@ cout<<endl;*/
 								int posStartInRead  = 	readLength2-(posEndRead-start);
 								std::string before = read.substr(max(0,posStartInRead-patternLength),min(posStartInRead,patternLength));
 								std::string after;
-								if(posStartInRead+patternLength> = readLength2) after = "";
+								if(posStartInRead+patternLength>= readLength2) after = "";
 								else
 									after = read.substr(posStartInRead+patternLength,min(patternLength,readLength2-posStartInRead-patternLength));
 
@@ -576,7 +576,7 @@ cout<<endl;*/
 										readsEnd.insert(read);
 										if( before.length()>10)
 											readsTandem.insert(read);
-										start+ =  pattern.length();
+										start +=  pattern.length();
 								}else if (after.length()<pattern.length() && pattern.find(after) == 0){
                     readsBegin.insert(read);
 										if( after.length()>10)
@@ -591,7 +591,7 @@ cout<<endl;*/
 					int cont2 = identifESDiff(readsTandem,readsBegin,readsEnd,pattern,nbCop,entries,exits);
 					if (cont2 == 0) break;
 
-		}else {//motif> = 80
+		}else {//motif>= 80
 						cout<<"case 3"<<endl;
 							std::string patternBegining = pattern.substr(0,80);
 							int fragLength = 80;
@@ -607,7 +607,7 @@ cout<<endl;*/
 								int posStartInRead  = 	readLength2-(posEndRead-start);
 								std::string before = read.substr(max(0,posStartInRead-fragLength),min(posStartInRead,fragLength));
 								std::string after;
-								if(posStartInRead+fragLength> = readLength2) after = "";
+								if(posStartInRead+fragLength>= readLength2) after = "";
 								else
 									after = read.substr(posStartInRead+fragLength,min(fragLength,readLength2-posStartInRead-fragLength));
 
@@ -635,7 +635,7 @@ cout<<endl;*/
 								int posStartInRead  = 	readLength2-(posEndRead-start);
 								std::string before = read.substr(max(0,posStartInRead-fragLength),min(posStartInRead,fragLength));
 								std::string after;
-								if(posStartInRead+fragLength> = readLength2) after = "";
+								if(posStartInRead+fragLength>= readLength2) after = "";
 								else
 									after = read.substr(posStartInRead+fragLength,min(fragLength,readLength2-posStartInRead-fragLength));
 
@@ -735,7 +735,7 @@ void retrivePatterns(std::vector<int> cycle, std::vector<Edge> edge_in, std::vec
 							nbCopiesAtomic = 1;
 							bool repInt = true;
 							restPattern = pattern.substr(length*nbCopiesAtomic);
-							while(repInt&&restPattern.length()> = length){;
+							while(repInt&&restPattern.length()>= length){;
 									size_t pos = restPattern.find(smallPattern);
 									if(restPattern.find(smallPattern) != 0) repInt = false;
 									nbCopiesAtomic++;
@@ -841,7 +841,7 @@ void removeSuppFreq(std::vector<int> cycle, std::vector<int> freqCycle, std::vec
 			}
 
 			//remouve the min freq between the entry and exit = the number of times we go throught the repetiton
-			if(freq_in[i]> = freq_out[j]) {
+			if(freq_in[i]>= freq_out[j]) {
 				suppFreqPos[startNode] = suppFreqPos[startNode]-freq_out[j];
 				suppFreqNeg[endNode] = suppFreqNeg[endNode]+freq_out[j];
 
@@ -876,7 +876,7 @@ void removeSuppFreq(std::vector<int> cycle, std::vector<int> freqCycle, std::vec
 			}
 			//replace the freq of the entry and the exit on the nodes for the next possible cupple
 			int freqIn;
-			if(freq_in[i]> = freq_out[j]) {
+			if(freq_in[i]>= freq_out[j]) {
 				suppFreqPos[startNode] = suppFreqPos[startNode]+freq_out[j];
 				suppFreqNeg[endNode] = suppFreqNeg[endNode]-freq_out[j];
 				freqIn = freq_out[j];
@@ -1018,7 +1018,7 @@ void removeSuppFreq(std::vector<int> cycle, std::vector<int> freqCycle, std::vec
 							nbCopiesAtomic = 1;
 							bool repInt = true;
 							restPattern = pattern.substr(length*nbCopiesAtomic);
-							while(repInt&&restPattern.length()> = length){;
+							while(repInt&&restPattern.length()>= length){;
 									size_t pos = restPattern.find(smallPattern);
 									if(restPattern.find(smallPattern) != 0) repInt = false;
 									nbCopiesAtomic++;
